@@ -9,7 +9,9 @@ services:
         links:
             - db
         networks:
-            - default
+            default:
+                external:
+                    name: lamp
     db:
         image: mysql:8.0
         ports: 
@@ -25,7 +27,9 @@ services:
             - ./conf:/etc/mysql/conf.d
             - persistent:/var/lib/mysql
         networks:
-            - default
+            default:
+                external:
+                    name: lamp
     phpmyadmin:
         image: phpmyadmin/phpmyadmin
         links: 
